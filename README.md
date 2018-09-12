@@ -28,3 +28,8 @@ Postman
 The [Postman][postmanlink] is a useful program to send HTTP Requests to the web application.
 
 [postmanlink]: https://www.getpostman.com/
+
+In Action
+-------------
+See the demo of QuickSort here:
+![](quicksort-gif.gif)
