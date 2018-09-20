@@ -1,8 +1,7 @@
-﻿@model SortingHatGraphs.Models.ListModel
-
+﻿
 <div class="jumbotron">
     <h1>QuickSort</h1>
-    <p class="lead">Small application the sorts a given list using QuickSort and displays each step when sorting</p>
+    <p class="lead">Small application that sorts a given list using QuickSort and displays each step when sorting</p>
 </div>
 <div class="row">
     <div class="col-md-6">
@@ -103,7 +102,7 @@
                                     color.push('rgba(255, 99, 132, 0.8)');
                                 }
                                 else {
-                                    color.push('rgba(255, 99, 132, 0.2)');
+                                    color.push('rgba(45, 0, 1, 0.2)');
                                 }
                             }
 
@@ -134,15 +133,16 @@
                 var nextStep = parseInt($("#hdnCurrenStep").val());
                 nextStep = nextStep + 1;
 
-                // Check if the next step is outside of list
-                var data = (JSON.parse($("#hdnList").html()))
-                if (nextStep == data.length) {
-                    // End of list, reset back to 0
+                // Get the list of steps
+                var hdnList = (JSON.parse($("#hdnList").html()))
+
+                // If the next step is at the end of the list, reset the count
+                if (nextStep == hdnList.length) {
                     nextStep = 0;
                 }
 
                 $("#hdnCurrenStep").val(nextStep);
-                data = data[nextStep];
+                var data = hdnList[nextStep];
                 var list = data.List;
 
                 var indexOne = data.IndexOne;
@@ -161,7 +161,7 @@
                         color.push('rgba(255, 99, 132, 0.8)');
                     }
                     else {
-                        color.push('rgba(255, 99, 132, 0.2)');
+                        color.push('rgba(45, 0, 1, 0.2)');
                     }
                 }
 
@@ -172,9 +172,14 @@
 
                 graph.update();
 
+                var timer = 500;
+                if (nextStep + 1 == hdnList.length) {
+                    timer = 1500; // Wait one and half seconds before restarting graph
+                }
+
                 // Set timer to update graph
                 clearTimeout(graphUpdateTimer);
-                graphUpdateTimer = setTimeout(updateGraph, 500);
+                graphUpdateTimer = setTimeout(updateGraph, timer);
             }
 
             var ctx = document.getElementById("graph").getContext('2d');

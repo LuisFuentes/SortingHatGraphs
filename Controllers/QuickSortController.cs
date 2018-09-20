@@ -28,15 +28,6 @@ namespace SortingHatGraphs.Controllers
             //return Json(sortedList);
             return Json(sort.GetChart());
         }
-
-        // Get /quicksort/
-
-        //public IList<IComparable> Sort([FromBody]ListModel list)
-        //{
-        //    // Perform QuickSort on the list and return the list
-        //    QuickSort sort = new QuickSort(list.List);
-        //    return sort.Sort();
-        //}
     }
 
     public class QuickSortChart
