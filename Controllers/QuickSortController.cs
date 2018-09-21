@@ -1,5 +1,4 @@
-﻿using SortingHatGraphs.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,11 +21,36 @@ namespace SortingHatGraphs.Controllers
         public JsonResult Sort(IList<IComparable> list)
         {
             // Perform QuickSort on the list and return the list
+
+            string error = ValidateList(list);
+
+            if (!string.IsNullOrEmpty(error))
+                return Json(new { Success = "False", responseText = error, Error =  error});
+            
+
             QuickSort sort = new QuickSort(list);
             IList<IComparable> sortedList = sort.Sort();
 
             //return Json(sortedList);
             return Json(sort.GetChart());
+        }
+
+        private string ValidateList(IList<IComparable> list)
+        {
+            // Function validates the list to ensure it's properly formatted
+
+            // Make sure there isn't any duplicates
+            // Check for duplicates using a hash set
+            HashSet<IComparable> hashset = new HashSet<IComparable>();
+            foreach (IComparable item in list)
+            {
+                if (!hashset.Add(item))
+                {
+                   return string.Format("Found duplicate for item {0}", item);
+                }
+            }
+
+            return string.Empty;
         }
     }
 

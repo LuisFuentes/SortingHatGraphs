@@ -20,7 +20,7 @@ Example of using QuickSort on a List:
 POST /api/quicksort HTTP/1.1
 Host: localhost:53658
 Content-Type: application/x-www-form-urlencoded
-list=1&list=3&list=5&list=4&list=95&list=53&list=0&list=002
+list=12&list=3&list=1&list=4&list=6&list=13&list=0&list=15
 ```
 
 Postman

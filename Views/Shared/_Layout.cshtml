@@ -21,7 +21,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("QuickSort", "Index", "QuickSort", new { area = "" }, null)</li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("QuickSort", "Index", "QuickSort", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
